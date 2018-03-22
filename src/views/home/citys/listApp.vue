@@ -177,13 +177,23 @@ export default {
 	blur(val){
 		if(val){
 			this.showCancle = true;
-			this.iptWidth = 2.8
+			this.iptWidth = 2.8;
+			
 		}else{
 			this.showCancle = false;
 			this.iptWidth = 3.21
 		}
 		this.showMask = false;
-		this.showNothing = false;
+		this.isShowNothing()
+	},
+	//是否显示未搜索结果
+	isShowNothing(){
+		let self = this;
+		if(this.searchData.length){
+			self.showNothing = false	
+		}else{
+			self.showNothing = true
+		}
 	},
 	//清除
 	clean(){
@@ -204,6 +214,7 @@ export default {
 		this.showClean = false;
 		this.showMask=false;
 		this.iptWidth = 3.21
+		this.showNothing = false
 	},
 	//输入框input事件
 	search(){
@@ -238,12 +249,7 @@ export default {
 				return;
 			}
 		})
-		console.log(self.searchData)
-		if(self.searchData.length!=0)	{
-			self.showNothing = false;
-		}else{
-			self.showNothing = true;
-		}
+		self.isShowNothing()
 	},
 	prevent(e){
 		e.stopPropagation();
@@ -269,7 +275,7 @@ export default {
     }    
     header{
 	   height:0.44rem;
-	   background-image: linear-gradient(-90deg, #FCE105 0%, #FECD15 100%);
+	   background-image: linear-gradient(90deg, #FCE105 0%, #FECD15 100%);
 	   position:fixed;
 	   top:0;
 	   left:0;
