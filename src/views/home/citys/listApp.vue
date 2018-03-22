@@ -159,7 +159,6 @@ export default {
 		index =index||0;
 		this.className = e.target.className;
 		this.activeIndex = index;
-		console.log(this.className,index)
 	},
 	getData(obj){
 		this.obj = obj
@@ -183,7 +182,8 @@ export default {
 			this.showCancle = false;
 			this.iptWidth = 3.21
 		}
-		this.showMask = false
+		this.showMask = false;
+		this.showNothing = false;
 	},
 	//清除
 	clean(){
