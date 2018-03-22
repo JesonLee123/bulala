@@ -1,8 +1,5 @@
-
 import Vue from 'vue'
-import App from './vuefilterApp'
-
-
+import App from './listApp'
 
 new Vue({
   render: h => h(App)
