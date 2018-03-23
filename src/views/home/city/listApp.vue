@@ -3,7 +3,7 @@
 		<div id="mask" class="mask" v-show="showMask" @touchmove="prevent($event)"></div>
 		<div id="container">
 			<header>
-				<div class="back-icon"><img src="" alt=""></div>
+				<div class="back-icon"><img src="./assets/global_nav_back@2x.png" alt=""></div>
 				<div class="cancel" v-show="showCancle" @click="cancel">取消</div>
 				<div class="text">
 					<div class="search-icon"><img src="./assets/ticket_query_search.png" alt=""></div>
@@ -97,8 +97,6 @@
 </template>
 
 <script>
-import 'assets/js/rem.js';
-import 'assets/css/common.css'
 export default {
   data() {
     return {
@@ -178,13 +176,14 @@ export default {
 		if(val){
 			this.showCancle = true;
 			this.iptWidth = 2.8;
-			
+			this.isShowNothing()			
 		}else{
 			this.showCancle = false;
-			this.iptWidth = 3.21
+			this.iptWidth = 3.21;
+			this.showNothing = false;
 		}
 		this.showMask = false;
-		this.isShowNothing()
+		
 	},
 	//是否显示未搜索结果
 	isShowNothing(){
@@ -280,18 +279,16 @@ export default {
 	   top:0;
 	   left:0;
 	   width:100%;
-	   padding:0.08rem 0.15rem;
-	   box-sizing: border-box;
 	   z-index: 1000;
+	   padding-right:.15rem;
+	   box-sizing: border-box;
 	   .back-icon{
 		   float:left;
-		   width:0.2rem;
+		   width:0.39rem;
 		   height:0.44rem;
-		   padding:0.05rem 0;
-		   box-sizing: border-box;
 		   img{
-			   width:0.08rem;
-			   height:0.18rem;
+			   width:0.39rem;
+			   height:0.44rem;
 		   }
 		}
 		.cancel{
@@ -301,12 +298,13 @@ export default {
 			letter-spacing: 0;
 			float:right;
 			font-size: 0.14rem;
-			line-height: 0.28rem;
-			margin-left: 0.14rem;
+			line-height: 0.44rem;
+			margin-left: 0.13rem;
 		}
 		.text{
 			float:right;
 			position: relative;
+			margin-top:0.08rem;
 			.search-icon{
 				position:absolute;
 				top:0.05rem;

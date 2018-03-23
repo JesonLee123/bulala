@@ -70,8 +70,7 @@
 </template>
 
 <script>
-import 'assets/js/rem.js';
-import 'assets/css/common.css'
+import 'assets/js/common.js';
 export default {
   data() {
     return {}
