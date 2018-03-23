@@ -3,11 +3,11 @@
 		<div id="mask" class="mask" v-show="showMask" @touchmove="prevent($event)"></div>
 		<div id="container">
 			<header>
-				<div class="back-icon"><img src="./assets/global_nav_back@2x.png" alt=""></div>
+				<div class="back-icon"></div>
 				<div class="cancel" v-show="showCancle" @click="cancel">取消</div>
 				<div class="text">
-					<div class="search-icon"><img src="./assets/ticket_query_search.png" alt=""></div>
-					<div class="clean-icon" v-show="showClean" @click="clean()"><img src="./assets/ticket_query_clean.png" alt=""></div>
+					<div class="search-icon"></div>
+					<div class="clean-icon" v-show="showClean" @click="clean()"></div>
 					<input type="text" placeholder="请输入城市名称（如北京/bj/beijing）" id="ipt" @focus="focus(searchCity)" @blur="blur(searchCity)" @input="search()" v-model="searchCity" :style="{width:iptWidth+'rem'}">
 				</div>
 			</header>
@@ -24,8 +24,8 @@
 					<div id="curCity">
 						<h3>当前定位城市</h3>
 						<ul class="list">
-							<li class="curCity" @click="selectCity(obj.curPos,$event)" :class="{ active: className.includes('curCity')||className.includes('img')}">
-								<img src="./assets/ticket_query_location.png" alt="" class="img">
+							<li class="curCity" @click="selectCity(obj.curPos,$event)" :class="{ active: className.includes('curCity')||className.includes('posIcon')}">
+								<div class="posIcon"></div>
 								&nbsp;&nbsp;&nbsp;{{obj.curPos}}
 							</li>
 						</ul>
@@ -88,7 +88,7 @@
 			</div>
 			<div class="nothing" v-show="showNothing">
 				<div class="pic">
-					<img src="./assets/ticket_query_nothing.png" alt="">
+					
 				</div>
 				<p>未搜索到相关城市</p>
 			</div>
@@ -259,6 +259,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+	.bg-image(@url){
+		background-image:~"url(@{url}@2x.png)";
+		@media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3){
+		background-image:~"url(@{url}@3x.png)";
+		}
+	}
     .mask {       
 		position: absolute;
 		top: 0;
@@ -286,10 +292,8 @@ export default {
 		   float:left;
 		   width:0.39rem;
 		   height:0.44rem;
-		   img{
-			   width:0.39rem;
-			   height:0.44rem;
-		   }
+		   .bg-image('./assets/global_nav_back');
+		   background-size: 0.39rem 0.44rem
 		}
 		.cancel{
 			font-family: PingFangSC-Regular;
@@ -307,21 +311,21 @@ export default {
 			margin-top:0.08rem;
 			.search-icon{
 				position:absolute;
-				top:0.05rem;
+				top:0.07rem;
 				left:0.08rem;
-				img{
-					width:0.14rem;
-					height:0.14rem;
-				}
+				width:0.14rem;
+				height:0.14rem;
+				background-size: .14rem .14rem;
+				.bg-image("./assets/ticket_query_search")
 			}
 			.clean-icon{
 				position: absolute;
 				top:0.06rem;
 				left:2.56rem;
-				img{
-					width:.12rem;
-					height:.12rem;
-				}
+				width:.12rem;
+				height:.12rem;
+				background-size: .12rem .12rem;
+				.bg-image("./assets/ticket_query_clean")
 			}
 			input{
 				background:#fff;
@@ -379,13 +383,16 @@ export default {
 				overflow: hidden;
 				.curCity{
 					position: relative;
-					img{
+					.posIcon{
 						position:absolute;
 						width:0.09rem;
 						height:0.12rem;
 						left:0.31rem;
 						top:0.07rem;
+						background-size: .09rem .12rem;
+						.bg-image("./assets/ticket_query_location")
 					}
+					
 					span{
 						margin-left:0.08rem;
 					}
@@ -476,10 +483,10 @@ export default {
 		width:1.28rem;
 		margin:1.11rem auto;
 		.pic{
-			img{
-				width:1.05rem;
-				height:1.05rem;
-			}
+			width:1.05rem;
+			height:1.05rem;
+			background-size: 1.05rem 1.05rem;
+			.bg-image("./assets/ticket_query_nothing")
 		}
 		p{
 			margin-top: .18rem;

@@ -1,9 +1,9 @@
 <template>
 	<div id="app">
         <header>
-            <div class="back_icon"><img src="./assets/global_nav_back@2x.png" alt=""></div>
+            <div class="back_icon"></div>
             <div class="air_line">
-                <p><span>北京</span>&nbsp;&nbsp;<span><img src="./assets/ticket_query_to@2x.png" alt=""></span>&nbsp;&nbsp;<span>杭州</span></p>
+                <p><span>北京</span>&nbsp;&nbsp;<span></span>&nbsp;&nbsp;<span>杭州</span></p>
                 <div class="date">03月21日</div>
             </div>
         </header>
@@ -11,7 +11,7 @@
             <div class="bg">
                 <div class="detail">
                     <div class="plane_com">
-                        <img src="./assets/ticket_tab_shijianpaixu@2x.png" alt="">
+                        <div class="logo"></div>
                         <span>东方航空MU2845</span>
                     </div>
                     <div class="time">
@@ -19,7 +19,7 @@
                             <p>12:30</p>
                             <span>禄口机场T2</span>
                         </div>
-                        <div class="pic"><img src="./assets/ticket_query_result_arrow@2x.png" alt=""></div>
+                        <div class="to_pic"></div>
                         <div class="to_time">
                             <p>00:20</p>
                             <span>白云T1</span>
@@ -53,7 +53,7 @@
             </ul>
         </div>
         <div class="nothing" v-if="showNoting">
-            <div class="pic"><img src="./assets/ticket_query_nothing@2x.png" alt=""></div>
+            <div class="pic"></div>
             <p>抱歉，没有查询到结果</p>
             <div class="research">重新搜索</div>
         </div>
@@ -91,10 +91,8 @@ export default {
                 float:left;
                 height:.44rem;
                 width:.39rem;
-                img{
-                    width:.39rem;
-                    height:.44rem;
-                }
+                .bg-image('./assets/global_nav_back');
+                background-size: .39rem .44rem;
             }
             .air_line{
                 width:.96rem;
@@ -103,10 +101,12 @@ export default {
                 p{
                     font-size: .16rem;
                     line-height: .16rem;
-                    img{
+                    span:nth-child(2){
+                        .bg-image("./assets/ticket_query_to");
+                        background-size:.12rem .1rem;
+                        display: inline-block;
                         width:.12rem;
-                        height:.1rem;
-                        margin-top:-.03rem
+                        height:.1rem
                     }
                 }
                 .date{
@@ -127,10 +127,13 @@ export default {
                 width:3.59rem;
                 height:1.3rem;
                 .plane_com{
-                    img{
+                    .logo{
+                        .bg-image('./assets/ticket_tab_shijianpaixu');
+                        display: inline-block;
                         width:.12rem;
                         height:.12rem;
                         margin-left:.12rem;
+                        background-size: .12rem .12rem
                     }
                     span{
                         font-size: .12rem;
@@ -157,13 +160,13 @@ export default {
                         color: #666666;
                         line-height: .25rem;
                     }
-                    .pic{
+                    .to_pic{
                         float:left;
                         margin:.16rem 0 0 .25rem;
-                        img{
-                            width:.65rem;
-                            height:.05rem;
-                        }
+                        .bg-image('./assets/ticket_query_result_arrow');
+                        width:.65rem;
+                        height:.05rem;
+                        background-size: .65rem .05rem;
                     }
                     .to_time{
                         float:right;
@@ -247,10 +250,10 @@ export default {
                 width:1.05rem;
                 height:1.05rem;
                 margin:0 auto;
-                img{
-                    width:1.05rem;
-                    height:1.05rem;
-                }
+                .bg-image('./assets/ticket_query_nothing');
+                width:1.05rem;
+                height:1.05rem;
+                background-size: 1.05rem 1.05rem;
             }
             p{
                 font-size: 0.16rem;

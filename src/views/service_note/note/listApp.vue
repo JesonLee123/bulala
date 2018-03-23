@@ -80,6 +80,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+    .bg-image(@url){
+        background-image:~"url(@{url}@2x.png)";
+        @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3){
+        background-image:~"url(@{url}@3x.png)";
+        }
+    }
     #app{
         font-family: PingFangSC-Regular;
         letter-spacing: 0;
